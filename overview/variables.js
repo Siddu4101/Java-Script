@@ -20,7 +20,7 @@ var globalVar = "I am a global variable";
 
 function functionSCope() {
     var x = 10; // x is only accessible within this function
-    console.log(x);
+    console.log(x); // Output: 10 
 
     if(true) {
         var y = 20;
@@ -182,8 +182,8 @@ function noDeclarationExampleWithoutStrictMode() {
     undeclaredVar = 10; // This will create a global variable
     console.log(undeclaredVar); // Output: 10
 }
-
 noDeclarationExampleWithoutStrictMode();
+console.log(undeclaredVar); // Output: 10 (undeclaredVar is accessible here because it is a global variable)
 
 /* with strict mode for that u need to !!! uncomment the "use strict" line  at the top of the file */
 function noDeclarationExampleWithStrictMode() {
@@ -192,3 +192,4 @@ function noDeclarationExampleWithStrictMode() {
 }
 
 noDeclarationExampleWithStrictMode();
+console.log(undeclaredVar1); // This will throw an error ReferenceError because undeclaredVar1 is not defined
