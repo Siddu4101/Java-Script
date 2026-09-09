@@ -15,71 +15,58 @@ console.log("Hello, World!");
 
 ### 2) Variables in JavaScript 📦
 
-JavaScript supports 4 styles:
-- `var` (old, function-scoped)
-- `let` (modern, block-scoped)
-- `const` (modern, block-scoped, no reassignment)
-- no declaration (not recommended)
+| Declaration | Scope | Redeclare | Reassign | Hoisting | Recommendation |
+|-----------|-------|-----------|----------|----------|-----------------|
+| 📌 `var` | Function | ✅ Yes | ✅ Yes | undefined | ❌ Avoid |
+| 📍 `let` | Block | ❌ No | ✅ Yes | TDZ | ✅ Prefer |
+| 🔒 `const` | Block | ❌ No | ❌ No | TDZ | ✅ Prefer |
 
-### `var` (function scope)
-
+#### `var` - Old & Problematic
 ```js
-var globalVar = "I am a global variable";
-
-function demo() {
-	var x = 10;
-	if (true) {
-		var y = 20;
-	}
-	console.log(y); // works: var is function-scoped
-}
-```
-
-### `let` (block scope)
-
-```js
-let m = 10;
-m = 50; // reassignment allowed
-
+var x = 10;
 if (true) {
-	let y = 20;
+	var x = 20; // overwrites! (function-scoped)
 }
-// console.log(y); // ReferenceError
+console.log(x); // 20 ⚠️
 ```
 
-### `const` (block scope + fixed binding)
-
+#### `let` - Modern Choice
 ```js
-const q = 10;
-// q = 50; // TypeError
+let x = 10;
+if (true) {
+	let x = 20; // separate scope
+}
+console.log(x); // 10 ✅
 ```
 
-### Hoisting Quick View ⚡
-
+#### `const` - Best Practice
 ```js
-console.log(a); // undefined
+const x = 10;
+// x = 20; // TypeError ❌
+// Objects can still be mutated
+const obj = { name: "John" };
+obj.name = "Jane"; // ✅ allowed
+```
+
+#### Hoisting Comparison ⚡
+```js
+console.log(a); // undefined (var initialized with undefined)
 var a = 10;
 
-// console.log(b); // ReferenceError
+// console.log(b); // ❌ ReferenceError (TDZ - Temporal Dead Zone)
 let b = 10;
 
-// console.log(c); // ReferenceError
+// console.log(c); // ❌ ReferenceError (TDZ)
 const c = 10;
 ```
 
-### No Declaration (avoid) ⚠️
-
+#### No Declaration (⚠️ Dangerous)
 ```js
-function badPractice() {
-	undeclaredVar = 10; // becomes global in non-strict mode
+function test() {
+	myVar = 10; // creates global in non-strict mode!
 }
 ```
-
-Use strict mode to prevent accidental globals:
-
-```js
-"use strict";
-```
+✅ **Solution:** Use `"use strict";` to prevent accidental globals
 
 ---
 
