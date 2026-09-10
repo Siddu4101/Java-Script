@@ -5,7 +5,7 @@
 
 ## JavaScript Overview 🚀
 
-### 1) Hello World + Comments 💬
+### 1) Hello World + Comments 💬 · [View code](helloWorld.js)
 
 ```js
 // Single-line comment
@@ -13,7 +13,7 @@
 console.log("Hello, World!");
 ```
 
-### 2) Variables in JavaScript 📦
+### 2) Variables in JavaScript 📦 · [View code](variables.js)
 
 | Declaration | Scope | Redeclare | Reassign | Hoisting | Recommendation |
 |-----------|-------|-----------|----------|----------|-----------------|
@@ -67,10 +67,9 @@ function test() {
 }
 ```
 ✅ **Solution:** Use `"use strict";` to prevent accidental globals
-
 ---
 
-### 3) Data Types in JavaScript 🎯
+### 3) Data Types in JavaScript 🎯 · [View code](datatypes.js)
 
 JS is **dynamically typed**. There are **7 primitive types** + **1 non-primitive type**:
 
@@ -193,6 +192,77 @@ obj.name = "Jane"; // ✅ allowed (mutation)
 
 ---
 
+### Built-in Type Examples 🧰 · [View code](explainedDatatypes.js)
 
+The examples in [`explainedDatatypes.js`](explainedDatatypes.js) show common built-in types and their useful methods.
 
+#### Strings 📝
 
+Strings can use double quotes, single quotes, or backticks. Backticks create **template literals**, which can insert values with `${expression}`.
+
+```js
+let message = "Hello, World!";
+let goodbye = String("Goodbye, World!");
+let greeting = `Message: ${message}`;
+
+console.log(message.charAt(2));       // "l" (character at index 2)
+console.log(message.indexOf("o"));    // 4 (first matching index)
+console.log(message.substring(0, 5)); // "Hello" (start included, end excluded)
+console.log(message.slice(-5));        // "orld!" (supports negative indexes)
+```
+
+📌 Indexes start at `0`. `substring()` does not support negative indexes; `slice()` does.
+
+#### Numbers 🔢
+
+```js
+let value = 42;
+let converted = Number("123");       // primitive number: 123
+let boxed = new Number(456);          // Number object, usually avoid this
+
+console.log(value.toString());        // "42"
+console.log(value.toFixed(2));         // "42.00"
+console.log(12364527.29939.toPrecision(3)); // "1.24e+7"
+console.log(typeof boxed);             // "object"
+```
+
+✅ Prefer `42` or `Number("42")`. `new Number(42)` wraps the value in an object and can cause confusing comparisons.
+
+#### Math ➗
+
+The `Math` object provides ready-made mathematical operations:
+
+```js
+Math.PI          // 3.141592653589793
+Math.sqrt(16)    // 4
+Math.pow(2, 3)   // 8
+Math.abs(-42)    // 42
+Math.floor(4.7)  // 4
+Math.ceil(4.3)   // 5
+Math.round(4.5)  // 5
+Math.min(1, 2, 3) // 1
+Math.max(1, 2, 3) // 3
+Math.random()    // random number from 0 (inclusive) to 1 (exclusive)
+```
+
+#### Dates and Time 📅
+
+JavaScript stores dates internally as milliseconds from **January 1, 1970 UTC**.
+
+```js
+const now = new Date();
+console.log(now);                    // current date and time
+console.log(now.toString());         // readable date string
+console.log(Date.now());             // current time in milliseconds
+
+const localDate = new Date(2026, 8, 11, 23);
+const utcDate = new Date("2026-09-11T10:30:00Z");
+
+console.log(localDate.getFullYear()); // 2026
+console.log(localDate.getMonth());    // 8 = September
+console.log(localDate.getMinutes());  // minutes
+```
+
+⚠️ `getMonth()` is zero-based: `0` is January and `8` is September. ISO strings ending in `Z` represent UTC time.
+
+---
