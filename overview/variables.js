@@ -20,7 +20,7 @@ var globalVar = "I am a global variable";
 
 function functionSCope() {
     var x = 10; // x is only accessible within this function
-    console.log(x);
+    console.log(x); // Output: 10 
 
     if(true) {
         var y = 20;
@@ -53,9 +53,8 @@ a = 30;
 console.log(a); // Output: 30
 
 /* 
-c. hoisting: all var declarations(only declarations) are hoisted to the top and initialized with undefined, which means that they can be used before they are declared. However, the value will be undefined until the line where it is assigned a value is executed.
-    till the var assigned to some value it will be in Temporal dead zone (TDZ) which means that the variable is in a "dead"(undefined value) state until it is assigned a value.
-    That is not true for let and const if you haven't declared them yet and try to access them it will throw a ReferenceError.
+c. hoisting: all var declarations(only declarations) are hoisted to the top and initialized with undefined, which means that they can be used before they are declared. However, the value will be undefined(for var and can't access for let and const(REFERENCE ERROR)) until the line where it is assigned a value is executed.
+    till the var assigned to some value it will be in Temporal dead zone (TDZ) applicable for let and const which means that the variable is in a "dead"(undefined value) state until it is assigned a value.
 */
 
 function hoistingExample() {
@@ -182,8 +181,8 @@ function noDeclarationExampleWithoutStrictMode() {
     undeclaredVar = 10; // This will create a global variable
     console.log(undeclaredVar); // Output: 10
 }
-
 noDeclarationExampleWithoutStrictMode();
+console.log(undeclaredVar); // Output: 10 (undeclaredVar is accessible here because it is a global variable)
 
 /* with strict mode for that u need to !!! uncomment the "use strict" line  at the top of the file */
 function noDeclarationExampleWithStrictMode() {
@@ -192,3 +191,4 @@ function noDeclarationExampleWithStrictMode() {
 }
 
 noDeclarationExampleWithStrictMode();
+console.log(undeclaredVar1); // This will throw an error ReferenceError because undeclaredVar1 is not defined
