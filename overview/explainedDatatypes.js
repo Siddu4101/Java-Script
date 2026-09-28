@@ -21,7 +21,7 @@ h    e   l   l   o  ,     w  o  r  l  d  !
 console.log(myString.charAt(2));// l
 console.log(myString.indexOf("o"));// 4
 console.log(myString.substring(0, 5));// Hello
-console.log(myString.slice(-13, -8));// world!
+console.log(myString.slice(-13, -8));// Hello
 
 
 /* 2. Number */
