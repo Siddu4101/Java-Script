@@ -31,3 +31,25 @@ console.log(arr.includes(3)); // true if element 3 exists
 arr.forEach((element) => {
   console.log(element);
 });
+
+//7. nested array
+let normalArray1 = [1,2,3];
+let normalArray2 = [5,6,7];
+
+//combining multiple arrays into one
+let combinedArray = [normalArray1, normalArray2];
+console.log(combinedArray);//[[1,2,3],[5,6,7]]
+
+let combineWithSpread = [...normalArray1, ...normalArray2];
+console.log(combineWithSpread);// [1,2,3,5,6,7]
+
+// let combinedWithConcat = normalArray1.concat(normalArray2);
+// console.log(combinedWithConcat);// [1,2,3,[5,6,7]]
+
+// console.log("normalArray1 after push: " + normalArray1); //[1,2,3,[5,6,7]]
+// console.log("normalArray2 after push: " + normalArray2); //[1,2,3,[5,6,7]]
+// normalArray1.push(normalArray2);//[1,2,3,[5,6,7]]
+// console.log("combined with push: " + normalArray1); //[1,2,3,[5,6,7]]
+
+
+// let combinedWithFlat = [normalArray1, normalArray2].flat();
