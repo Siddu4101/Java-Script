@@ -40,16 +40,18 @@ let normalArray2 = [5,6,7];
 let combinedArray = [normalArray1, normalArray2];
 console.log(combinedArray);//[[1,2,3],[5,6,7]]
 
+// combining arrays with spread operator
 let combineWithSpread = [...normalArray1, ...normalArray2];
 console.log(combineWithSpread);// [1,2,3,5,6,7]
 
-// let combinedWithConcat = normalArray1.concat(normalArray2);
-// console.log(combinedWithConcat);// [1,2,3,[5,6,7]]
+// combining arrays with flat method
+let combinedWithFlat = [normalArray1, normalArray2,[12,13,[14,15]]].flat(2);
+console.log(combinedWithFlat); // [1,2,3,5,6,7,12,13,14,15]
 
-// console.log("normalArray1 after push: " + normalArray1); //[1,2,3,[5,6,7]]
-// console.log("normalArray2 after push: " + normalArray2); //[1,2,3,[5,6,7]]
-// normalArray1.push(normalArray2);//[1,2,3,[5,6,7]]
-// console.log("combined with push: " + normalArray1); //[1,2,3,[5,6,7]]
+// combining arrays with concat method
+let combinedWithConcat = normalArray1.concat(normalArray2);
+console.log(combinedWithConcat);// [1,2,3,5,6,7]
 
-
-// let combinedWithFlat = [normalArray1, normalArray2].flat();
+// using push to add normalArray2 to normalArray1 adds as a element
+normalArray1.push(normalArray2);
+console.log(normalArray1);// [1,2,3,[5,6,7]]
