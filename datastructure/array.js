@@ -2,6 +2,17 @@
 let arr = [1, 2, 3, 4, 5];
 console.log(arr);
 
+//Array from using from 
+let arrFrom = Array.from([1, 2, 3, 4, 5]);
+console.log(arrFrom);
+
+//from string
+let arrFromString = Array.from("hello");
+console.log(arrFromString); // ["h", "e", "l", "l", "o"]
+
+//array from of 
+let arrOf = Array.of(1, 2, 3, 4, 5);
+console.log(arrOf);// [1, 2, 3, 4, 5]
 
 //1. add and remove elements from the array end
 arr.push(6); // add element to the end
