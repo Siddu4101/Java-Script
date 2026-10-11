@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="heading">Hello Sid!</h1>
+    <button id="btn">Click Me</button>
+    <script>
+      const heading = document.getElementById("heading");
+      const button = document.getElementById("btn");
+
+      button.addEventListener("click", () => {
+        heading.textContent = "Hello JavaScript!";
+        heading.style.color = "blue";
+      });
+    </script>
+  </body>
+</html>

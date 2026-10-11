@@ -1,0 +1,59 @@
+//similer to java we have for,while,do while, break, continue, switch in JS also 
+//there is some difference in the foreach and for in and for of and reduce methods that we will see
+
+//foreach
+const arr = [1, 2, 3, 4, 5];
+const objs = [
+    {name: "Sid", age: 25},
+    {name: "Vijju", age: 26},
+    {name: "Raj", age: 23}
+]
+
+arr.forEach((element) => {
+  console.log("element", element);
+});
+
+const map = new Map();
+map.set("1","ONE") 
+map.set("2","TWO") 
+map.set("3","THREE") 
+
+
+map.forEach((k,v)=>{
+    console.log(`The key ${k} and value ${v}`);
+    
+})
+
+//objects
+objs.forEach((k)=>{
+    console.log(`The object name ${k.name} and age is ${k.age}`);
+    
+})
+
+//for in
+for(let item in arr){
+    console.log("item via for in", item);
+}
+
+//objs
+for(const i in objs){
+    console.log(`The object name ${objs[i].name} and age is ${objs[i].age}`);
+}
+
+
+//for of
+for(const i of arr){
+    console.log(`Item ${i}`);
+ 
+}
+//objs
+for(const i of objs){
+    console.log(`The object name ${i.name} and age is ${i.age}`);
+}
+
+
+//reduce
+
+const sum = arr.reduce((acc, curVal)=>acc+curVal, 0) //0 is initial val for the accumalator(acc)
+console.log(`The sum is ${sum}`);
+
