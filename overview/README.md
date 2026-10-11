@@ -266,3 +266,32 @@ console.log(localDate.getMinutes());  // minutes
 ⚠️ `getMonth()` is zero-based: `0` is January and `8` is September. ISO strings ending in `Z` represent UTC time.
 
 ---
+
+
+### Operators with special behaviours 
+| Operator | Name               | One-line explanation                                                                  | Example                                                      | Output         |
+| -------- | ------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------ | -------------- |
+| `===`    | Strict equality    | Checks whether both value and type are equal.                                         | `5 === "5"`                                                  | `false`        |
+| `!==`    | Strict inequality  | Returns `true` if the value or type differs.                                          | `5 !== "5"`                                                  | `true`         |
+| `**`     | Exponentiation     | Raises a number to the power of another number.                                       | `2 ** 3`                                                     | `8`            |
+| `??`     | Nullish coalescing | Uses the right-side value only if the left side is `null` or `undefined`.             | `null ?? 10`                                                 | `10`           |
+| `?.`     | Optional chaining  | Accesses a property safely when an intermediate value might be `null` or `undefined`. | `user?.name` (if `user` is `null`)                           | `undefined`    |
+| `...`    | Spread             | Expands elements of an iterable into individual elements.                             | `[...[1, 2, 3], 4]`                                          | `[1, 2, 3, 4]` |
+| `...`    | Rest               | Collects multiple arguments into a single array.                                      | `function add(...nums) { return nums; }` then `add(1, 2, 3)` | `[1, 2, 3]`    |
+| `typeof` | Type operator      | Returns a string describing a value's type.                                           | `typeof 42`                                                  | `"number"`     |
+| `in`     | Property existence | Checks whether a property exists in an object or its prototype chain.                 | `"name" in {name: "Sid"}`                                    | `true`         |
+
+### Truthy values:
+- Any non-zero number (e.g., `1`, `-1`)
+- Any non-empty string (e.g., `"hello"`, or `" "`) including `'false'` (non-empty string)
+- `true` 
+- Any object (e.g., `{}`, `[]`)
+- `Symbol()`
+
+### Falsy values:
+- `0`,`-0`
+- `""` (empty string)
+- `false`
+- `null`
+- `undefined`
+- `NaN`
