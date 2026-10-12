@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H2>Digital clock</H2>
+    <div id="clock" style="height: 50px; width: 100px; background-color: black; color: white; align-content: center; text-align: center;"></div>
+    <script>
+        const clock = document.querySelector("#clock")
+        //for each second update the clock
+        setInterval(() =>{
+            console.log(`Time is ${new Date().toLocaleTimeString()}`)
+            clock.innerHTML = `${new Date().toLocaleTimeString()}`
+        }, 1000)
+    </script>
+</body>
+</html>
