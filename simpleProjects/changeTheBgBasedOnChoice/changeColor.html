@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Select the color to change the background</h3>
+    <div>
+        <button style="padding: 20px; background-color: red; text-align: center;" onclick="changeBg('red')">Red</button>
+        <button style="padding: 20px; background-color: green; text-align: center;" onclick="changeBg('green')">Green</button>
+        <button style="padding: 20px; background-color: yellow; text-align: center;" onclick="changeBg('yellow')">Yellow</button>
+        <button style="padding: 20px; background-color: pink; text-align: center;" onclick="changeBg('pink')">Pink</button>
+    </div>
+    <script>
+        function changeBg(color){
+            console.log("changing background color to ", color)
+           const body = document.querySelector("body")
+           body.style.backgroundColor = color
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>BMI Calculator</h1>
+    <form onsubmit="calculateBMI(event)">
+        <input id="height" type="number" step="any" placeholder="height in m"><br><br>
+        <input id="weight" type="number" step="any" placeholder="weight in kg"><br><br>
+        <button type="submit">Calculate</button>
+    </form>
+    
+   <h2>BMI Category Reference</h2>
+   <table border="1">
+    <tr>
+        <th>Below 18.5</th>
+        <th>18.5 to 24.9</th>
+        <th>25 to 29.9</th>
+        <th>30 and above</th>
+    </tr>
+    <tr>
+        <td>Underweight</td>
+        <td>Normal weight</td>
+        <td>Overweight</td>
+        <td>Obesity</td>
+    </tr>
+</table>
+
+    <h3 id="result"></h3>
+    <script>
+        function calculateBMI(event) {
+            event.preventDefault()
+            const height = document.getElementById("height").value
+            const weight = document.getElementById("weight").value
+            document.getElementById("result").innerHTML = `The calculated BMI is ${(weight/(height*height)).toFixed(2)}`
+        }
+    </script>
+</body>
+</html>
