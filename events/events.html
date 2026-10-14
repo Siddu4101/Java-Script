@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" onclick="onclickHandleFun(event)"></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+
+   <!-- for propgation ex : bubbling (child to grandParent) and capturing(grandParent to child) -->
+    <div id="grandparent" style="padding: 3%; background-color: rgb(68, 112, 3);">
+        Grandparent
+        <br><br>
+        <div id="parent" style="padding: 3%; background-color: rgb(130, 73, 8);">
+            Parent
+            <br><br>
+            <button id="child" style="padding: 3%; background-color: rgb(5, 106, 160);">Click Me</button>
+        </div>
+    </div>
+<script>
+    //1.Inline HTML handler:  Onclick directly on the tag
+    //not recommended as it is not scallable and can't attach multiple actions for same event
+    function onclickHandleFun(event){
+        console.log(event)
+        console.log(`onclick inline html usage`)
+        alert("Inline html onClick event test")
+    }
+
+    //2. DOM event property
+    //this is also not much recommended as still we can't assign much action at once
+    const japan = document.getElementById("japan")
+
+    japan.onmouseenter = (event) =>{
+        console.log(event)
+        console.log(`Mouse entered the li`)
+        alert("DOM event property of onmouseenter")
+    }
+
+
+    //3. addEventListener: this is scalable and recommended option
+    const photoshop = document.getElementById("photoshop")
+    
+    photoshop.addEventListener("click", (event)=>{
+        console.log(event)
+        console.log("first click event via addEventListener")
+        alert("first click event via addEventListener")
+    })
+
+    photoshop.addEventListener("click", (event)=>{
+        console.log(event)
+        console.log("second click event via keydown")
+        alert("second click event via addEventListener")
+    })
+
+
+    // Event propagation(on click of child  child ==> parent ==> grandparent)
+    //1. Bubblig default behaviour event travels from the child to parent
+    //if u want to stop the propagation u can do that by adding the stopPropagation()
+
+    const child = document.getElementById("child");
+    child.addEventListener('click', (event)=>{
+        console.log('child clicked')
+        // event.stopPropagation() //to prevent bubbling(to any parent elements) on click of child
+    })
+    
+    
+    const parent = document.getElementById("parent");
+    parent.addEventListener('click', ()=>{
+        console.log('parent clicked')
+    })
+
+    const grandParent = document.getElementById("grandparent");
+    grandParent.addEventListener('click', ()=>{
+        console.log('grandparent clicked')
+    })
+
+
+    //2. Capturing (need to pass extra true in the event listener)(on right click of child  grandparent ==> parent ==> child)
+    child.addEventListener('contextmenu', ()=>{
+        console.log('child right clicked')
+
+    }, true)
+    
+    parent.addEventListener('contextmenu', ()=>{
+        console.log('parent right clicked')
+    }, true)
+
+    grandParent.addEventListener('contextmenu', (event)=>{
+        console.log('grandparent right clicked')
+        // event.stopPropagation()//to prevent the capturing when u click on child(any inner elements)
+    }, true)
+
+
+
+    //Remove the picture by click on them 
+    const imges = document.getElementById("images")
+    images.addEventListener('click', (event)=>{
+        console.log('removing the list element', event.target.parentNode)
+        event.target.parentNode.remove()
+    })
+</script>
+</body>
+</html>
