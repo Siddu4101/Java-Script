@@ -9,7 +9,7 @@
 ## 1. 🔄 Synchronous vs Asynchronous
 
 - **Synchronous:** Executes line by line; each statement waits for the previous one to finish.
-- **Asynchronous:** Allows JavaScript to continue executing while waiting for operations like timers or API calls.
+- **Asynchronous:** Allows JavaScript to continue executing while waiting for operations like timers or API calls and adds the callback to the appropriate queue for later execution.
 
 ```javascript
 console.log("A");
