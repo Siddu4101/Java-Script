@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hey this text gone change</h1>
+    <button id="avoidTextChange">Avoid title change</button><br><br><br><br>
+
+    <button id="startChnageColor">Start change color</button>
+    <button id="stopChnageColor">Stop change color</button> <br><br>
+
+    <script>
+        //1. setTimeOut: runs 1's after given delay atleast
+        const h1 = document.querySelector("h1")
+        const changeText = setTimeout(() => {
+            console.log("reached timeout and changing the text...")
+            h1.innerHTML = 'This is the new text afte the timeout!!!'
+        }, 3000);
+
+        //clearTimeOut : if u want u can stop the function execution before it runs 
+       document.querySelector("#avoidTextChange").addEventListener('click', () => {
+        console.log("text change has been stopped")
+        clearTimeout(changeText)
+        }) 
+
+        //2. setInterval: it will run the function atleast of given interval repeatedly
+        let changeColorInterval = null;
+        document.querySelector("#startChnageColor").addEventListener('click', () =>{
+            console.log("starting the color chnage....")
+            if(changeColorInterval == null) //to avoid the reregistering the same task with new interval
+                changeColorInterval = setInterval(changeColor, 1000)
+        })
+
+        function changeColor(){
+            document.body.style.backgroundColor = randomColor()     
+            
+            function randomColor(){
+                let color = "#"
+                let hex = "0123456789ABCDEF"
+
+                for(let i = 0; i<6;i++){
+                    color += hex[Math.floor(Math.random()*16)]
+                }
+                console.log("new color is ", color)
+                return color;
+            }
+        }
+
+        //clearInterval: stops the interval
+        document.querySelector("#stopChnageColor").addEventListener('click', () =>{
+            console.log("stopping the color chnage....")
+            if(changeColorInterval != null){ //to avoid trying cancel the interval entry which is not present
+                clearInterval(changeColorInterval)
+                changeColorInterval = null //to resart change if again clicked
+            }
+        })
+
+    </script>
+</body>
+</html>
