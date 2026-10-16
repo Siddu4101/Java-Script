@@ -2,6 +2,10 @@
 
 > Note: Async not means the multi threaded it just that the block of code scheduled to some future time and don't affect the current execution
 
+## Internals of Async and JS
+![Internals of Async and JS](./internalsOfAsyncAndJs.png)
+
+
 ## 1. 🔄 Synchronous vs Asynchronous
 
 - **Synchronous:** Executes line by line; each statement waits for the previous one to finish.
