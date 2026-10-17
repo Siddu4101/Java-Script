@@ -70,6 +70,23 @@ function outer(){
 }
 
 outer()
+/* 
+When u have nested function at that time the inner method executes and discards the execution context and clears the var
+but if u want to hold it u need use the extra call function to do that 
+*/
+
+function first(name, age){
+    this.name = name
+    function second(age){
+        this.age = age
+    }
+    // second(age) /* prints only {name:'Sid'} age is missing because of the nested method*/
+    second.call(this,age) /* prints only {name:'Sid',age:100} this holds the context as u r passing the first method context init and it uses that for the age assignment*/
+}
+
+const nest = new first("Sid", 100);
+console.log(nest) 
+
 
 
 //this keyword usage inside the functios
@@ -91,3 +108,4 @@ let iage = 23;
     console.log(`The  IIFE initialization name ${iname} and age is ${iage}`)
 })();
 console.log(`The outside IIFE name ${iname} and age is ${iage}`)
+
