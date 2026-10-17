@@ -5,6 +5,7 @@
 ## Internals of Async and JS
 ![Internals of Async and JS](./internalsOfAsyncAndJs.png)
 
+![Internals of Callback](./internalsOfCallback.png)
 
 ## 1. 🔄 Synchronous vs Asynchronous
 
