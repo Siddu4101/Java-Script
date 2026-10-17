@@ -307,18 +307,46 @@ async function getUser() {
 }
 
 getUser();
+
+
+// for other than GET u can specify the method and rest things like header body etc..
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then(response => response.json())
+  .then(json => console.log(json))
+
 ```
 
-📌 **Execution flow:**
+📌 **Important points:**
 
-1. `fetch()` starts the HTTP request and returns a Promise.
-2. The first `await` waits for the response.
-3. `response.json()` returns another Promise.
-4. The second `await` waits for the parsed JSON data.
-5. `try...catch` handles errors.
+1. fetch() is used for HTTP communication with servers.
+2. It returns a Promise.
+3. response.json() also returns a Promise.
+4. .then() and async/await are two ways to work with Promises.
+5. fetch() does not automatically reject for HTTP 404 or 500 responses.
+6. JSON.stringify() converts JavaScript data into JSON text for requests.
+7. JSON.parse() converts JSON text into a JavaScript value, while response.json() handles reading and parsing the response body asynchronously.
 
 ⚠️ `fetch()` does not automatically reject for HTTP errors such as `404` or `500`. Check `response.ok` explicitly.
 
+
+response.ok is true for HTTP statuses in the 200–299 range.
+There are two different kinds of errors to remember:
+
+| Error type | Example | Does `fetch()` reject automatically? |
+|---|---|---|
+| Network error | Connection refused | Usually yes |
+| HTTP error | 404, 500 | No |
+| Invalid JSON | Body isn't valid JSON | `response.json()` rejects |
 ---
 
 ## 8. 🧰 Useful Promise Methods

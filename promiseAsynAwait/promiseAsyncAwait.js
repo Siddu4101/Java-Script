@@ -71,9 +71,49 @@ consumePromise(true)
 consumePromise(false)
 
 
+/*fetch : a request accessory which helps to do the n/w requests u can pass headers, body etc... and it returns a promise as a return
+fetch beasically divided in 2 parts one works at browser/node level and anther helps for the data/var maintain 
+1. browser/node : which does the request and based on the response/reject it updates the var in the other part
+2. var: (data:'', onFullfill:[fn], onFailure:[fn]): if request was success it will adds the data and onFullfill else updates the onFailure
+NOTE: The auth errors like 404,403,401 or 500 etc it will be considered as a response instead of errors
+*/
+async function getUser() {
+    try {
+        const response = await fetch(
+            "https://jsonplaceholder.typicode.com/users/1"
+        );
+
+        if (!response.ok) {
+            throw new Error("Request failed");
+        }
+
+        const user = await response.json();
+
+        console.log(user.name);
+        console.log(user.email);
+    } catch (error) {
+        console.log("Error:", error.message);
+    }
+}
+
+getUser();
 
 
-
+// for other than GET u can specify the method and rest things like header body etc..
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  body: JSON.stringify({
+    title: 'foo',
+    body: 'bar',
+    userId: 1,
+  }),
+  headers: {
+    'Content-type': 'application/json; charset=UTF-8',
+  },
+})
+  .then(response => response.json())
+  .then(json => console.log(json))
+  .catch(reject => console.log("there is some issue ",reject))
 
 
 
